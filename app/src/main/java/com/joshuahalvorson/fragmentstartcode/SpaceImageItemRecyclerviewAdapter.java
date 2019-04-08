@@ -44,7 +44,7 @@ public class SpaceImageItemRecyclerviewAdapter extends RecyclerView.Adapter<Spac
             @Override
             public void onClick(View v) {
                 if(listener != null){
-                    //listener.onFragmentInteraction(spaceImageListItem);
+                    listener.onFragmentInteraction(spaceImageListItem);
                 }
             }
         });
