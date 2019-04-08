@@ -78,10 +78,23 @@ public class ItemListFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         listItems = new ArrayList<>();
-        SpaceImageItemRecyclerviewAdapter adapter = new SpaceImageItemRecyclerviewAdapter(listItems, mListener);
+        final SpaceImageItemRecyclerviewAdapter adapter = new SpaceImageItemRecyclerviewAdapter(listItems, mListener);
         RecyclerView recyclerView = view.findViewById(R.id.space_image_item_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                listItems.clear();
+                listItems.addAll(SpaceImageRepository.getSpaceImageListItems());
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        adapter.notifyDataSetChanged();
+                    }
+                });
+            }
+        }).start();
     }
 
     // TODO: Rename method, update argument and hook method into UI event
