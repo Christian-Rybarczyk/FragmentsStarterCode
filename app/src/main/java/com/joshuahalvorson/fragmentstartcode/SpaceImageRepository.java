@@ -24,4 +24,15 @@ public class SpaceImageRepository {
         }
         return listItems;
     }
+
+    public static SpaceImageDetails getSpaceImageDetails(int id){
+        String result = NetworkAdapter.httpRequest(GET_IMAGE_DETAILS_URL + id);
+        try {
+            JSONObject jsonObject = new JSONObject(result);
+            return new SpaceImageDetails(jsonObject);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
