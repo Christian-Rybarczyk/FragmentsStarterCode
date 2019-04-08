@@ -9,6 +9,8 @@ import android.os.Bundle;
 public class MainActivity extends AppCompatActivity implements
         ItemListFragment.OnFragmentInteractionListener{
 
+    public static final String SPACE_IMAGE_KEY = "space_image";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,8 +23,18 @@ public class MainActivity extends AppCompatActivity implements
                 .commit();
     }
 
-    @Override
-    public void onFragmentInteraction(Uri uri) {
 
+    @Override
+    public void onFragmentInteraction(SpaceImageListItem item) {
+        SpaceImageDetailFragment spaceImageDetailFragment = new SpaceImageDetailFragment();
+
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(SPACE_IMAGE_KEY, item);
+        spaceImageDetailFragment.setArguments(bundle);
+
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, spaceImageDetailFragment)
+                .addToBackStack(null)
+                .commit();
     }
 }
