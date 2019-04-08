@@ -13,9 +13,9 @@ import java.util.ArrayList;
 public class SpaceImageItemRecyclerviewAdapter extends RecyclerView.Adapter<SpaceImageItemRecyclerviewAdapter.ViewHolder> {
 
     private ArrayList<SpaceImageListItem> listItems;
-    private ImageListFragment.OnFragmentInteractionListener listener;
+    private ItemListFragment.OnFragmentInteractionListener listener;
 
-    public SpaceImageItemRecyclerviewAdapter(ArrayList<SpaceImageListItem> listItems, ImageListFragment.OnFragmentInteractionListener listener) {
+    public SpaceImageItemRecyclerviewAdapter(ArrayList<SpaceImageListItem> listItems, ItemListFragment.OnFragmentInteractionListener listener) {
         this.listItems = listItems;
         this.listener = listener;
     }
@@ -44,7 +44,7 @@ public class SpaceImageItemRecyclerviewAdapter extends RecyclerView.Adapter<Spac
             @Override
             public void onClick(View v) {
                 if(listener != null){
-                    listener.onFragmentInteraction(spaceImageListItem);
+                    //listener.onFragmentInteraction(spaceImageListItem);
                 }
             }
         });
