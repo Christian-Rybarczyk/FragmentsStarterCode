@@ -1,5 +1,7 @@
 package com.joshuahalvorson.fragmentstartcode;
 
+import android.graphics.Bitmap;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -35,4 +37,9 @@ public class SpaceImageRepository {
         }
         return null;
     }
+
+    public static Bitmap getSpaceImageBitmap(String url){
+        return NetworkAdapter.httpImageRequest(url);
+    }
+
 }
