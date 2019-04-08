@@ -1,5 +1,6 @@
 package com.joshuahalvorson.fragmentstartcode;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
@@ -13,9 +14,9 @@ import java.util.ArrayList;
 public class SpaceImageItemRecyclerviewAdapter extends RecyclerView.Adapter<SpaceImageItemRecyclerviewAdapter.ViewHolder> {
 
     private ArrayList<SpaceImageListItem> listItems;
-    private ItemListFragment.OnFragmentInteractionListener listener;
+    private ItemListFragment.OnSpaceImageListFragmentInteractionListener listener;
 
-    public SpaceImageItemRecyclerviewAdapter(ArrayList<SpaceImageListItem> listItems, ItemListFragment.OnFragmentInteractionListener listener) {
+    public SpaceImageItemRecyclerviewAdapter(ArrayList<SpaceImageListItem> listItems, ItemListFragment.OnSpaceImageListFragmentInteractionListener listener) {
         this.listItems = listItems;
         this.listener = listener;
     }
@@ -44,7 +45,7 @@ public class SpaceImageItemRecyclerviewAdapter extends RecyclerView.Adapter<Spac
             @Override
             public void onClick(View v) {
                 if(listener != null){
-                    listener.onFragmentInteraction(spaceImageListItem);
+                    listener.OnSpaceImageListFragmentInteractionListener(spaceImageListItem);
                 }
             }
         });

@@ -1,10 +1,11 @@
 package com.joshuahalvorson.fragmentstartcode;
 
 import android.content.Context;
-import android.net.Uri;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -18,12 +19,12 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link ItemListFragment.OnFragmentInteractionListener} interface
+ * {@link OnSpaceImageListFragmentInteractionListener} interface
  * to handle interaction events.
  * Use the {@link ItemListFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ItemListFragment extends Fragment {
+public class ItemListFragment extends DialogFragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -35,7 +36,7 @@ public class ItemListFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private OnFragmentInteractionListener mListener;
+    private OnSpaceImageListFragmentInteractionListener mListener;
 
     public ItemListFragment() {
         // Required empty public constructor
@@ -100,8 +101,8 @@ public class ItemListFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
+        if (context instanceof OnSpaceImageListFragmentInteractionListener) {
+            mListener = (OnSpaceImageListFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
@@ -124,8 +125,8 @@ public class ItemListFragment extends Fragment {
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    public interface OnFragmentInteractionListener {
+    public interface OnSpaceImageListFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onFragmentInteraction(SpaceImageListItem item);
+        void OnSpaceImageListFragmentInteractionListener(SpaceImageListItem item);
     }
 }

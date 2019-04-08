@@ -1,13 +1,12 @@
 package com.joshuahalvorson.fragmentstartcode;
 
-import android.net.Uri;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity implements
-        ItemListFragment.OnFragmentInteractionListener{
+        ItemListFragment.OnSpaceImageListFragmentInteractionListener {
 
     public static final String SPACE_IMAGE_KEY = "space_image";
 
@@ -25,16 +24,25 @@ public class MainActivity extends AppCompatActivity implements
 
 
     @Override
-    public void onFragmentInteraction(SpaceImageListItem item) {
+    public void OnSpaceImageListFragmentInteractionListener(SpaceImageListItem item) {
         SpaceImageDetailFragment spaceImageDetailFragment = new SpaceImageDetailFragment();
 
         Bundle bundle = new Bundle();
         bundle.putSerializable(SPACE_IMAGE_KEY, item);
         spaceImageDetailFragment.setArguments(bundle);
 
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, spaceImageDetailFragment)
-                .addToBackStack(null)
-                .commit();
+        if(getResources().getBoolean(R.bool.is_tablet)){
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.fragment_details, spaceImageDetailFragment)
+                    .addToBackStack(null)
+                    .commit();
+        }else{
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.fragment_container, spaceImageDetailFragment)
+                    .addToBackStack(null)
+                    .commit();
+        }
+
+
     }
 }
