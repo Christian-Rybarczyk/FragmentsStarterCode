@@ -6,9 +6,13 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import java.util.ArrayList;
 
 
 /**
@@ -24,6 +28,8 @@ public class ItemListFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
+    private ArrayList<SpaceImageListItem> listItems;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -71,7 +77,11 @@ public class ItemListFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-
+        listItems = new ArrayList<>();
+        SpaceImageItemRecyclerviewAdapter adapter = new SpaceImageItemRecyclerviewAdapter(listItems, mListener);
+        RecyclerView recyclerView = view.findViewById(R.id.space_image_item_list);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setAdapter(adapter);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
